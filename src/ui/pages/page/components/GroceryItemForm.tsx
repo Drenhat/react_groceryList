@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {AddGroceryItemProps} from "../../../../app/models/AddGroceryItemProps";
 
-export const AddGroceryItemForm: React.FC<AddGroceryItemProps> = ({addGroceryItem}) => {
+export const GroceryItemForm: React.FC<AddGroceryItemProps> = ({addGroceryItem}) => {
     const [text, setText] = useState("")
     const listPlaceHolder: string = "Enter a new item"
 

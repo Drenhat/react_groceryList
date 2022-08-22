@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {GroceryItem} from "../../../app/models/GroceryItem";
 import {GroceryList} from "./components/GroceryList";
-import {AddGroceryItemForm} from "./components/AddGroceryItemForm";
+import {GroceryItemForm} from "./components/GroceryItemForm";
 import {AddGroceryItem} from "../../../app/models/AddGroceryItem";
 
 const initialGroceryItem: GroceryItem[] = [
@@ -39,7 +39,7 @@ export const Page: React.FC = () => {
         <div className="container">
             <h1>This is a grocery list</h1>
             <h2>Please add some items</h2>
-            <AddGroceryItemForm addGroceryItem={addGroceryItem} />
+            <GroceryItemForm addGroceryItem={addGroceryItem} />
             <GroceryList groceryItems={groceryItems} toggleGroceryItem={toggleGroceryItem} />
         </div>
     )
