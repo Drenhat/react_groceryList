@@ -1,18 +1,22 @@
 import React from "react";
-import {Props} from "../../../../app/models/Props";
+import {GroceryItemProps} from "../../../../app/models/GroceryItemProps";
 
-export const GroceryListItem: React.FC<Props> = ({groceryItem, toggleGroceryItem}) => {
-    return <li>
-        <label
-        style={{ textDecoration: groceryItem.complete ? "line-through" : undefined}}>
-            <input
-            type="checkbox"
-            checked={groceryItem.complete}
-            onClick={() => {
-                toggleGroceryItem(groceryItem);
-            }}
-            />
-        {groceryItem.text}
-        </label>
-    </li>;
+export const GroceryListItem: React.FC<GroceryItemProps> = ({groceryItem, toggleGroceryItem}) => {
+    return (
+        <div className="grocery-list-item">
+            <li>
+                <label
+                style={{ textDecoration: groceryItem.complete ? "line-through" : undefined}}>
+                    <input
+                    type="checkbox"
+                    checked={groceryItem.complete}
+                    onClick={() => {
+                        toggleGroceryItem(groceryItem);
+                    }}
+                    />
+                {groceryItem.text}
+                </label>
+            </li>
+        </div>
+    )
 };

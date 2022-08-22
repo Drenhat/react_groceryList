@@ -1,0 +1,21 @@
+.grocery-list-item {
+
+  li {
+    padding-right: 5px;
+    margin-bottom: 7px;
+
+    label {
+
+      input {
+        margin-right: 10px;
+
+        &:checked {
+          filter: invert(100%) hue-rotate(-32deg) brightness(1.7);
+        }
+
+      }
+
+    }
+  }
+
+}

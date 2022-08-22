@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-import {GroceryListItem} from "./components/GroceryListItem";
 import {GroceryItem} from "../../../app/models/GroceryItem";
-import {groceryItemsState} from "../../atoms/groceryItemsState";
-import {useRecoilState} from "recoil";
+import {GroceryList} from "./components/GroceryList";
+import {AddGroceryItemForm} from "./components/AddGroceryItemForm";
+import {AddGroceryItem} from "../../../app/models/AddGroceryItem";
 
 const initialGroceryItem: GroceryItem[] = [
     {
@@ -30,15 +30,17 @@ export const Page: React.FC = () => {
         setGroceryItems(newGroceryItem);
     }
 
+    const addGroceryItem: AddGroceryItem = (text: string) => {
+        const newGroceryItem = {text, complete: false};
+        setGroceryItems([...groceryItems, newGroceryItem]);
+    }
+
     return (
-        <ul>
-            <GroceryListItem
-                groceryItem={groceryItems[0]}
-                toggleGroceryItem={toggleGroceryItem}
-            />
-            <GroceryListItem
-                toggleGroceryItem={toggleGroceryItem}
-                groceryItem={groceryItems[1]}/>
-        </ul>
+        <div className="container">
+            <h1>This is a grocery list</h1>
+            <h2>Please add some items</h2>
+            <AddGroceryItemForm addGroceryItem={addGroceryItem} />
+            <GroceryList groceryItems={groceryItems} toggleGroceryItem={toggleGroceryItem} />
+        </div>
     )
 }
