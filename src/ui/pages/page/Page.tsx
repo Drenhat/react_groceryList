@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import {GroceryListItem} from "./components/GroceryListItem";
 import {GroceryItem} from "../../../app/models/GroceryItem";
+import {groceryItemsState} from "../../atoms/groceryItemsState";
+import {useRecoilState} from "recoil";
 
-const groceryItem: GroceryItem[] = [
+const initialGroceryItem: GroceryItem[] = [
     {
         text: 'tomatoes',
         complete: false,
@@ -13,12 +15,30 @@ const groceryItem: GroceryItem[] = [
     },
 ];
 
-// @ts-ignore
 export const Page: React.FC = () => {
+    const [groceryItems, setGroceryItems] = useState(initialGroceryItem);
+
+    const toggleGroceryItem = (selectedGroceryItem: GroceryItem) => {
+        const newGroceryItem = groceryItems.map((groceryItem) => {
+            if (groceryItem === selectedGroceryItem) {
+                return {
+                    ...groceryItem,
+                    complete: !groceryItem.complete
+                };
+            } return groceryItem
+        });
+        setGroceryItems(newGroceryItem);
+    }
+
     return (
         <ul>
-            <GroceryListItem  groceryItem={groceryItem[0]}/>
-            <GroceryListItem  groceryItem={groceryItem[1]}/>
+            <GroceryListItem
+                groceryItem={groceryItems[0]}
+                toggleGroceryItem={toggleGroceryItem}
+            />
+            <GroceryListItem
+                toggleGroceryItem={toggleGroceryItem}
+                groceryItem={groceryItems[1]}/>
         </ul>
     )
 }
